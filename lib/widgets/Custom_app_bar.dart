@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/views/widgets/Custom_icon.dart';
+import 'package:notes_app/widgets/Custom_icon.dart';
 
 class custom_app_bar extends StatelessWidget {
   const custom_app_bar({super.key});
