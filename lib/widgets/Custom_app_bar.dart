@@ -9,12 +9,15 @@ class custom_app_bar extends StatelessWidget {
     return const Row(
       children: [
         SizedBox(
-          height: 150,
+          height: 30,
         ),
-        Text(
-          'Notes',
-          style: TextStyle(
-            fontSize: 32,
+        Padding(
+          padding: EdgeInsets.only(top: 60, left: 10),
+          child: Text(
+            'Notes',
+            style: TextStyle(
+              fontSize: 32,
+            ),
           ),
         ),
         Spacer(),

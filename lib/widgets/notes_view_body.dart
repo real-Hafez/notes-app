@@ -9,7 +9,7 @@ class notes_view_body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 12),
+      padding: EdgeInsets.symmetric(horizontal: 10),
       child: Column(
         children: [
           custom_app_bar(),
