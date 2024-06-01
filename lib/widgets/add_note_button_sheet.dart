@@ -27,7 +27,13 @@ class add_note_button_sheet extends StatelessWidget {
               hint: 'content',
               maxlines: 5,
             ),
+            SizedBox(
+              height: 30,
+            ),
             custom_button(),
+            SizedBox(
+              height: 20,
+            ),
           ],
         ),
       ),
