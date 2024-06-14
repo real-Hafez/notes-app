@@ -5,15 +5,11 @@ import 'package:notes_app/models/note_model.dart';
 
 part 'notes_cubit_state.dart';
 
-class NotesCubitCubit extends Cubit<NotesCubitState> {
-  NotesCubitCubit() : super(NotesCubitInitial());
-  fetchallnotes() async {
-    try {
-      emit(Noteloading());
-      var notesBox = Hive.box<notemodel>('notes'); // Use the correct box name
-    emit(Notesucsess(notesBox.values.toList()));
-    } catch (e) {
-      emit(Notefailure(error_msg: e.toString()));
-    }
+class NotesCubit extends Cubit<NotesCubitState> {
+  NotesCubit() : super(NotesCubitInitial());
+  List<notemodel>? notes;
+  fetchallnotes() {
+    var notesBox = Hive.box<notemodel>(notes as String);
+    notes = notesBox.values.toList as List<notemodel>?;
   }
 }
