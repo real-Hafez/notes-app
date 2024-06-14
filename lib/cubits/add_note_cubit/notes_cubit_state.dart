@@ -1,14 +1,20 @@
 part of 'notes_cubit_cubit.dart';
 
 @immutable
-sealed class NotesCubitState {}
+abstract class NotesCubitState {}
 
-final class NotesCubitInitial extends NotesCubitState {}
+class NotesCubitInitial extends NotesCubitState {}
 
-final class Noteloading extends NotesCubitState {}
+class Noteloading extends NotesCubitState {}
 
-final class Notesucsess extends NotesCubitState {
+class Notesucsess extends NotesCubitState {
   final List<notemodel> notes;
 
   Notesucsess(this.notes);
+}
+
+class NoteFailure extends NotesCubitState {
+  final String error;
+
+  NoteFailure(this.error);
 }

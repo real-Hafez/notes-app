@@ -17,7 +17,7 @@ class notes_view_body extends StatelessWidget {
             title: 'notes',
           ),
           Expanded(
-            child: notes_list_view(),
+            child: NotesListView(),
           ),
         ],
       ),
