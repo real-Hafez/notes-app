@@ -4,9 +4,9 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:notes_app/cubits/add_note_cubit/add_note_cubit.dart';
+import 'package:notes_app/cubits/add_note_cubit/notes_cubit_cubit.dart';
 import 'add_note_form.dart';
 
-// ignore: must_be_immutable
 class add_note_button_sheet extends StatelessWidget {
   const add_note_button_sheet({super.key});
 
@@ -18,12 +18,14 @@ class add_note_button_sheet extends StatelessWidget {
           print('failed ${state.error}');
         }
         if (state is AddNotesucsess) {
+          // Find the NotesCubit and refresh the notes
+          BlocProvider.of<NotesCubit>(context).fetchallnotes();
           Navigator.pop(context);
         }
       },
       builder: (context, state) {
         return AbsorbPointer(
-          absorbing: state is AddNoteloading ? true : false,
+          absorbing: state is AddNoteloading,
           child: Padding(
             padding: EdgeInsets.only(
                 left: 16,

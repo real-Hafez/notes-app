@@ -11,19 +11,24 @@ class notes_list_view extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<NotesCubit, NotesCubitState>(
       builder: (context, state) {
-        List<notemodel> notes =
-            BlocProvider.of<NotesCubit>(context).notes ?? [];
-        return Padding(
-          padding: const EdgeInsets.symmetric(vertical: 5),
-          child: ListView.builder(
-            itemCount: notes.length,
-            padding: EdgeInsets.zero,
-            itemBuilder: (context, index) => const Padding(
-              padding: EdgeInsets.symmetric(vertical: 2),
-              child: note_item(),
+        if (state is NotesCubitInitial || state is Noteloading) {
+          return const Center(child: CircularProgressIndicator());
+        } else if (state is Notesucsess) {
+          List<notemodel> notes = state.notes;
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 5),
+            child: ListView.builder(
+              itemCount: notes.length,
+              padding: EdgeInsets.zero,
+              itemBuilder: (context, index) => Padding(
+                padding: const EdgeInsets.symmetric(vertical: 2),
+                child: note_item(note: notes[index]),
+              ),
             ),
-          ),
-        );
+          );
+        } else {
+          return const Center(child: Text('Failed to load notes'));
+        }
       },
     );
   }
