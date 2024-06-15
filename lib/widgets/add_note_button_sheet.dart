@@ -19,7 +19,7 @@ class add_note_button_sheet extends StatelessWidget {
         }
         if (state is AddNotesucsess) {
           // Find the NotesCubit and refresh the notes
-          BlocProvider.of<NotesCubit>(context).fetchallnotes();
+          BlocProvider.of<NotesCubit>(context).fetchAllNotes();
           Navigator.pop(context);
         }
       },
