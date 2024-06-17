@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:notes_app/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
+import 'package:notes_app/widgets/color_list_view.dart';
 import 'package:notes_app/widgets/custom_button.dart';
 import 'package:notes_app/widgets/custom_text_field.dart';
 
@@ -25,19 +26,21 @@ class _Add_Note_FormState extends State<Add_Note_Form> {
       autovalidateMode: autovalidateMode,
       child: Column(
         children: [
-          SizedBox(height: 35),
+          const SizedBox(height: 30),
           custom_text_field(
             onSaved: (value) => title = value,
             hint: 'Title',
             maxlines: 2,
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 30),
           custom_text_field(
             onSaved: (value) => subtitle = value,
             hint: 'Content',
             maxlines: 5,
           ),
-          SizedBox(height: 30),
+          const SizedBox(height: 30),
+          color_list_view(),
+          const SizedBox(height: 30),
           BlocBuilder<AddNoteCubit, AddNoteState>(
             builder: (context, state) {
               return custom_button(
@@ -64,7 +67,7 @@ class _Add_Note_FormState extends State<Add_Note_Form> {
               );
             },
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
         ],
       ),
     );
