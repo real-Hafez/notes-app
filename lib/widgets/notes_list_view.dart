@@ -45,8 +45,12 @@ class _NotesListViewState extends State<NotesListView> {
         } else {
           return const Center(child: Text('Failed to load notes'));
         }
+        
+        
       },
+      
     );
+    
   }
 
   void _removeItem(int index) {
