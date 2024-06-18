@@ -61,6 +61,6 @@ class _NotesListViewState extends State<NotesListView> {
       duration: const Duration(milliseconds: 600),
     );
     // Call fetchAllNotes() or your logic to update the state
-    BlocProvider.of<NotesCubit>(context).fetchallnotes();
+    BlocProvider.of<NotesCubit>(context).fetchAllNotes();
   }
 }

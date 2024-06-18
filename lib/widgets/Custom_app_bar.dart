@@ -6,19 +6,24 @@ class custom_app_bar extends StatelessWidget {
     super.key,
     required this.title,
     required this.icon,
+    this.onpressed,
   });
   final IconData icon;
+  final void Function()? onpressed;
 
   final String title;
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        SizedBox(
+        const SizedBox(
           height: 30,
         ),
         Padding(
-          padding: EdgeInsets.only(top: 60, left: 10),
+          padding: const EdgeInsets.only(
+            top: 60,
+            left: 10,
+          ),
           child: Text(
             title,
             style: const TextStyle(
@@ -28,6 +33,7 @@ class custom_app_bar extends StatelessWidget {
         ),
         const Spacer(),
         custom_search_icon(
+          onpressed: onpressed,
           icon: icon,
         )
       ],
