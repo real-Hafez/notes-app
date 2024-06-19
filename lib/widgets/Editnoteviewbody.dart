@@ -55,7 +55,7 @@ class _EditnoteviewbodyState extends State<Editnoteviewbody> {
             maxlines: 5,
           ),
           const SizedBox(
-            height: 15,
+            height: 16,
           ),
           const color_list_view(),
         ],
