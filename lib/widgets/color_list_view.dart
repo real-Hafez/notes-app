@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/constant.dart';
 import 'package:notes_app/cubits/add_note_cubit/add_note_cubit.dart';
-import 'package:notes_app/models/note_model.dart';
 
 class color_item extends StatelessWidget {
   const color_item({super.key, required this.isactive, required this.colors});
@@ -35,20 +35,9 @@ class color_list_view extends StatefulWidget {
 }
 
 class _color_list_viewState extends State<color_list_view> {
-  int current_index = 0;
-  List<Color> colors = [
-    Colors.black,
-    Colors.white,
-    Colors.amber,
-    Colors.green,
-    Colors.blue,
-    Colors.red,
-    Colors.orange,
-    Colors.purple,
-    Colors.cyan,
-    Colors.pink,
-  ];
+  
 
+  @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 38 * 2,

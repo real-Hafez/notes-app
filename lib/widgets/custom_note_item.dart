@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/views/edit_note_view.dart';
 import 'package:notes_app/models/note_model.dart';
 
-class note_item extends StatelessWidget {
+class note_item extends StatefulWidget {
   final notemodel note;
   final Animation<double> animation;
   final VoidCallback onDelete;
@@ -15,20 +15,29 @@ class note_item extends StatelessWidget {
   });
 
   @override
+  _note_itemState createState() => _note_itemState();
+}
+
+class _note_itemState extends State<note_item> {
+  bool isDeleted = false;
+
+  @override
   Widget build(BuildContext context) {
     return SizeTransition(
-      sizeFactor: animation,
+      sizeFactor: widget.animation,
       axis: Axis.vertical,
       child: GestureDetector(
         onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => EditNoteView(
-                note: note,
+          if (!isDeleted) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => EditNoteView(
+                  note: widget.note,
+                ),
               ),
-            ),
-          );
+            );
+          }
         },
         child: Container(
           padding: const EdgeInsets.only(
@@ -37,7 +46,7 @@ class note_item extends StatelessWidget {
             left: 12,
           ),
           decoration: BoxDecoration(
-            color: Color(note.color),
+            color: Color(widget.note.color),
             borderRadius: BorderRadius.circular(16),
           ),
           child: Column(
@@ -45,7 +54,7 @@ class note_item extends StatelessWidget {
             children: [
               ListTile(
                 title: Text(
-                  note.title,
+                  widget.note.title,
                   style: const TextStyle(
                     color: Colors.black,
                     fontSize: 42,
@@ -54,7 +63,7 @@ class note_item extends StatelessWidget {
                 subtitle: Padding(
                   padding: const EdgeInsets.only(top: 10),
                   child: Text(
-                    note.subtitle,
+                    widget.note.subtitle,
                     style: TextStyle(
                       color: Colors.black.withOpacity(0.6),
                       fontSize: 26,
@@ -63,8 +72,11 @@ class note_item extends StatelessWidget {
                 ),
                 trailing: IconButton(
                   onPressed: () {
-                    note.delete();
-                    onDelete();
+                    setState(() {
+                      isDeleted = true;
+                    });
+                    widget.note.delete();
+                    widget.onDelete();
                   },
                   icon: const Icon(
                     Icons.delete,
@@ -76,7 +88,7 @@ class note_item extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(right: 26),
                 child: Text(
-                  note.date,
+                  widget.note.date,
                   style: TextStyle(
                     fontSize: 16,
                     color: Colors.black.withOpacity(0.7),
